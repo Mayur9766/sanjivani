@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#120726" />
+  <title>Happy Birthday Sanjivani ❤️</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Floating Ambient Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- App Shell -->
+  <main class="mobile-app">
+
+    <!-- Top Status Bar: Story-style Progress Bars -->
+    <header class="story-progress">
+      <div class="bar"><div class="fill" id="fill-0"></div></div>
+      <div class="bar"><div class="fill" id="fill-1"></div></div>
+      <div class="bar"><div class="fill" id="fill-2"></div></div>
+      <div class="bar"><div class="fill" id="fill-3"></div></div>
+      <div class="bar"><div class="fill" id="fill-4"></div></div>
+    </header>
+
+    <!-- Music Control Button -->
+    <button id="musicToggle" class="music-pill" aria-label="Toggle audio">
+      <span class="music-icon">🎵</span>
+      <span class="music-text">Music</span>
+    </button>
+    <audio id="bgMusic" loop preload="auto">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mp3" />
+    </audio>
+
+    <!-- SLIDES CONTAINER -->
+    <div class="slides-viewport">
+
+      <!-- SLIDE 0: Welcome / Lock Screen -->
+      <section class="slide-card active" data-index="0">
+        <div class="card-glow"></div>
+        <div class="slide-content">
+          <div class="pill-tag">✨ A Special Surprise</div>
+          <div class="avatar-ring">
+            <span class="ring-emoji">👑</span>
+          </div>
+          <h1 class="headline">Happy Birthday,<br /><span class="gradient-text">Sanjivani</span></h1>
+          <p class="body-text">Every second with you is a gift, but today belongs completely to you.</p>
+        </div>
+        <div class="action-footer">
+          <button class="tap-btn" onclick="goToSlide(1)">
+            <span>Tap to Begin</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SLIDE 1: Date & Milestone -->
+      <section class="slide-card" data-index="1">
+        <div class="card-glow"></div>
+        <div class="slide-content">
+          <div class="badge-icon">🎂</div>
+          <h2 class="section-title">16 August 2000</h2>
+          <p class="highlight-quote">"The day the world became a much brighter, kinder place."</p>
+          
+          <div class="milestone-box">
+            <div class="milestone-item">
+              <span class="m-title">To My Fiancé 💍</span>
+              <span class="m-desc">My favorite person, my best friend, and my whole heart.</span>
+            </div>
+          </div>
+        </div>
+        <div class="action-footer">
+          <button class="tap-btn" onclick="goToSlide(2)">
+            <span>Our Memories</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SLIDE 2: Photo Memory Frame -->
+      <section class="slide-card" data-index="2">
+        <div class="card-glow"></div>
+        <div class="slide-content">
+          <h2 class="section-title">My Favorite Smile ❤️</h2>
+          <div class="polaroid-wrapper">
+            <div class="polaroid">
+              <!-- Replace with a direct link or local file like photo.jpg -->
+              <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=600&auto=format&fit=crop&q=80" alt="Memory" id="cardImage" />
+              <div class="polaroid-caption">You & Me, always.</div>
+            </div>
+          </div>
+          <p class="body-text small">I can't wait for all the adventures and memories we are going to build together.</p>
+        </div>
+        <div class="action-footer">
+          <button class="tap-btn" onclick="goToSlide(3)">
+            <span>Read Note 💌</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SLIDE 3: Love Letter -->
+      <section class="slide-card" data-index="3">
+        <div class="card-glow"></div>
+        <div class="slide-content">
+          <div class="letter-sheet">
+            <h3 class="letter-heading">Dearest Sanjivani,</h3>
+            <p class="letter-paragraph">
+              Happy Birthday, my love! Having you by my side as my fiancé is the purest joy in my life.
+            </p>
+            <p class="letter-paragraph">
+              Thank you for bringing endless smiles, peace, and warmth to my world. May this year bring you all the love, success, and pure happiness you deserve.
+            </p>
+            <div class="letter-signature">Forever Yours ❤️</div>
+          </div>
+        </div>
+        <div class="action-footer">
+          <button class="tap-btn celebrate-gradient" onclick="celebrateGrandFinale()">
+            <span>Make a Birthday Wish 🎈</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- SLIDE 4: Celebration Finale -->
+      <section class="slide-card" data-index="4">
+        <div class="card-glow"></div>
+        <div class="slide-content finale">
+          <div class="sparkle-bounce">🥂✨💖</div>
+          <h1 class="headline">Happiest Birthday,<br /><span class="gradient-text">Sanjivani!</span></h1>
+          <p class="body-text">May all your wishes and prayers come true today and forever.</p>
+          <div class="action-grid">
+            <button class="icon-action-btn" onclick="triggerBurst()">
+              <span>🎉 Shower Confetti</span>
+            </button>
+          </div>
+        </div>
+        <div class="action-footer">
+          <button class="secondary-btn" onclick="goToSlide(0)">
+            <span>Replay From Start ↺</span>
+          </button>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    let currentIndex = 0;
+    const totalSlides = 5;
+    const slides = document.querySelectorAll('.slide-card');
+    const fills = document.querySelectorAll('.story-progress .fill');
+
+    function updateProgress(index) {
+      fills.forEach((fill, i) => {
+        if (i < index) {
+          fill.style.width = '100%';
+        } else if (i === index) {
+          fill.style.width = '100%';
+        } else {
+          fill.style.width = '0%';
+        }
+      });
+    }
+
+    function goToSlide(targetIndex) {
+      if (targetIndex < 0 || targetIndex >= totalSlides) return;
+      slides.forEach(s => s.classList.remove('active'));
+      currentIndex = targetIndex;
+      const activeCard = document.querySelector(`.slide-card[data-index="${currentIndex}"]`);
+      if (activeCard) activeCard.classList.add('active');
+      updateProgress(currentIndex);
+    }
+
+    // Grand Finale & Confetti Cannon
+    function celebrateGrandFinale() {
+      goToSlide(4);
+      triggerBurst();
+    }
+
+    function triggerBurst() {
+      const duration = 3.5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 35, spread: 360, ticks: 70, zIndex: 9999 };
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+        const particleCount = 40 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.2, y: 0.4 } }));
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: 0.8, y: 0.4 } }));
+      }, 200);
+    }
+
+    // Touch Swipe Gestures
+    let touchStartX = 0;
+    let touchEndX = 0;
+    document.querySelector('.slides-viewport').addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    document.querySelector('.slides-viewport').addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    }, { passive: true });
+
+    function handleGesture() {
+      const threshold = 45;
+      if (touchStartX - touchEndX > threshold && currentIndex < totalSlides - 1) {
+        goToSlide(currentIndex + 1); // Swipe Left -> Next
+      } else if (touchEndX - touchStartX > threshold && currentIndex > 0) {
+        goToSlide(currentIndex - 1); // Swipe Right -> Prev
+      }
+    }
+
+    // Background Particles
+    const particlesContainer = document.getElementById('particles');
+    const icons = ['💖', '✨', '🌸', '💕', '⭐'];
+    function spawnParticle() {
+      const p = document.createElement('div');
+      p.className = 'floating-item';
+      p.innerText = icons[Math.floor(Math.random() * icons.length)];
+      p.style.left = Math.random() * 95 + 'vw';
+      p.style.animationDuration = (4 + Math.random() * 3) + 's';
+      p.style.fontSize = (14 + Math.random() * 16) + 'px';
+      particlesContainer.appendChild(p);
+      setTimeout(() => p.remove(), 7000);
+    }
+    setInterval(spawnParticle, 700);
+
+    // Audio Playback Handler
+    const musicBtn = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicBtn.classList.remove('playing');
+        musicBtn.querySelector('.music-icon').innerText = '🔇';
+      } else {
+        bgMusic.play().then(() => {
+          musicBtn.classList.add('playing');
+          musicBtn.querySelector('.music-icon').innerText = '🎵';
+        }).catch(() => {});
+      }
+      isPlaying = !isPlaying;
+    }
+
+    musicBtn.addEventListener('click', toggleAudio);
+
+    // Auto-unlock sound on first interaction
+    window.addEventListener('touchstart', () => {
+      if (!isPlaying) toggleAudio();
+    }, { once: true });
+
+    updateProgress(0);
+  </script>
+</body>
+</html>
